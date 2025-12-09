@@ -26,5 +26,13 @@ return {
             -- This loads the file at lua/plugins/configs/code.lua
             require("plugins.configs.code")
         end,
-    }
+    },
+    {
+        "mason-org/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+        config = function() require "plugins.configs.mason" end,
+    },
+    {
+        "mason-org/mason-lspconfig.nvim",
+    },
 }

@@ -18,17 +18,17 @@ return {
         "folke/which-key.nvim",
         event = "VeryLazy",
     },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("plugins.configs.neotree")
-        end,
-    },
+--    {
+--        "nvim-neo-tree/neo-tree.nvim",
+--        dependencies = {
+--            "nvim-lua/plenary.nvim",
+--            "nvim-tree/nvim-web-devicons",
+--            "MunifTanjim/nui.nvim",
+--        },
+--        config = function()
+--            require("plugins.configs.neotree")
+--        end,
+--    },
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {

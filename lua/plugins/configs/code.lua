@@ -1,36 +1,5 @@
--- 1. Setup Mason (The installer)
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" }, -- Auto-install Lua LSP
-})
-
--- 2. Setup Autocomplete (CMP)
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-
---- LINTING SETUP (nvim-lint) ---
-local lint = require("lint")
-local map = vim.keymap.set
-
--- 1. Define Linters and prioritize Mason-installed versions
-lint.linters_by_ft = {
-    lua = { "luacheck" },
-    javascript = { "eslint_d" },
-    typescript = { "eslint_d" },
-    json = { "jsonlint" },
-}
-
--- 2. Autocmd to Enable Linting on save
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    callback = function()
-        -- Only run linting if the file is tracked
-        if not vim.g.autoformat_disabled then
-            lint.try_lint()
-        end
-    end,
-})
-
-
 
 cmp.setup({
     snippet = {
