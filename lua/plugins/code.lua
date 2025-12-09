@@ -18,6 +18,10 @@ return {
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
         },
+        {
+        "mfussenegger/nvim-lint",
+        event = "BufWritePost", -- Run after saving
+        },
         config = function()
             -- This loads the file at lua/plugins/configs/code.lua
             require("plugins.configs.code")

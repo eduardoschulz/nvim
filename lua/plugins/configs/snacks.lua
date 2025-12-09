@@ -16,6 +16,8 @@ snacks.setup({
     words = { enabled = true },
 })
 
+
+
 -- 2. Define Keybindings
 -- We use a helper variable 'map' for readability, or just vim.keymap.set directly
 local map = vim.keymap.set

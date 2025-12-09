@@ -16,5 +16,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup Lazy
 require("lazy").setup({
     -- This tells lazy to import all files in lua/plugins automatically
+  spec = {
     { import = "plugins" }, 
+  },
+  install = { colorscheme = { "catppuccin" }},
+  
 })
