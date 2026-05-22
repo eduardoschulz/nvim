@@ -1,47 +1,56 @@
 return {
-    {
-        "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
-        config = function()
-            require("plugins.configs.snacks")
-        end,
-    }, 
-    {
-        "romgrk/barbar.nvim",
-        dependencies = {
-            "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-            "nvim-tree/nvim-web-devicons",
-        },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("plugins.config.which-key")
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("plugins.config.gitsigns")
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("plugins.config.indent-blankline")
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("plugins.config.todo-comments")
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    event = "UIEnter",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("plugins.config.noice")
+    end,
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    opts = {
+      suppressed_dirs = { "~", "/tmp" },
     },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-    },
---    {
---        "nvim-neo-tree/neo-tree.nvim",
---        dependencies = {
---            "nvim-lua/plenary.nvim",
---            "nvim-tree/nvim-web-devicons",
---            "MunifTanjim/nui.nvim",
---        },
---        config = function()
---            require("plugins.configs.neotree")
---        end,
---    },
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "make",
-            },
-        },
-        cmd = "Telescope",
-        config = function(_)
-            require "plugins.configs.telescope"
-        end,
-    },
+    config = function(_, opts)
+      require("auto-session").setup(opts)
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("plugins.config.lualine")
+    end,
+  },
 }

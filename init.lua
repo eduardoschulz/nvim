@@ -1,5 +1,25 @@
--- 1. Load basic vim options (line numbers, etc)
-require("config.options")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- 2. Bootstrap and setup Lazy.nvim
-require("config.lazy")
+require("options")
+require("mappings")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  install = { colorscheme = { "catppuccin" } },
+})
