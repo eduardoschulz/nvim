@@ -24,7 +24,7 @@ require("noice").setup({
       ["vim.lsp.util.open_floating_preview"] = true,
     },
     progress = { enabled = false },
-    hover = { enabled = false },
+    hover = { enabled = true },
     signature = { enabled = false },
     message = { enabled = false },
   },

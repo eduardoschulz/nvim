@@ -1,7 +1,6 @@
 vim.pack.add({
   { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
 })
 
 local lsp_servers = {
@@ -9,8 +8,8 @@ local lsp_servers = {
   'pylsp',
   'clangd',
   'lua_ls',
---  'gopls',
-  'yamls',
+  'gopls',
+  'yamlls',
 }
 
 require('mason').setup()
@@ -24,7 +23,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   underline = true,
   update_in_insert = false,
@@ -69,6 +68,6 @@ vim.iter(lsp_servers):each(function(lsp_server)
   vim.lsp.enable(lsp_server)
 end)
 
-require('nvim-treesitter.config').setup({
-  install_dir = vim.fn.stdpath('data') .. '/site',
-})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover' })
+
