@@ -10,6 +10,7 @@ vim.pack.add({
   { src = "https://github.com/windwp/nvim-autopairs" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
+  { src = "https://github.com/sunbluesome/holon.nvim" },
 })
 
 local actions = require("telescope.actions")
@@ -43,9 +44,12 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers,     { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags,   { desc = "Help tags" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>fr", builtin.oldfiles,    { desc = "Recent files" })
+vim.keymap.set("n", "<leader>bq", function() vim.cmd.bdelete() end, { desc = "Kill buffer" })
 
 -- bufferline
 require("bufferline").setup()
+vim.keymap.set("n", "gb", function() vim.cmd.bnext() end,  { desc = "Next buffer" })
+vim.keymap.set("n", "gB", function() vim.cmd.bprev() end,  { desc = "Previous buffer" })
 
 -- autopairs
 require("nvim-autopairs").setup()
@@ -80,3 +84,14 @@ require("toggleterm").setup({
   direction = "horizontal",   -- "horizontal" | "vertical" | "float"
   shade_terminals = true,
 })
+
+-- holon (note-taking / GTD)
+require("holon").setup({
+  notes_path = vim.fn.expand("~/notes"),
+})
+vim.keymap.set("n", "<leader>zf", "<cmd>Holon<cr>",     { desc = "Holon: Find notes" })
+vim.keymap.set("n", "<leader>zg", "<cmd>HolonGrep<cr>", { desc = "Holon: Grep notes" })
+vim.keymap.set("n", "<leader>zc", "<cmd>HolonNew<cr>",  { desc = "Holon: New note" })
+vim.keymap.set("n", "<leader>zb", "<cmd>HolonBacklinks<cr>", { desc = "Holon: Backlinks" })
+vim.keymap.set("n", "<leader>zd", "<cmd>HolonToday<cr>", { desc = "Holon: Today's journal" })
+vim.keymap.set("n", "<leader>zh", "<cmd>HolonGtd<cr>",  { desc = "Holon: GTD board" })
