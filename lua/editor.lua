@@ -10,6 +10,7 @@ vim.pack.add({
   { src = "https://github.com/windwp/nvim-autopairs" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
   { src = "https://github.com/akinsho/toggleterm.nvim" },
+  { src = "https://github.com/obsidian-nvim/obsidian.nvim"}
 })
 
 local actions = require("telescope.actions")
@@ -80,3 +81,9 @@ require("toggleterm").setup({
   direction = "horizontal",   -- "horizontal" | "vertical" | "float"
   shade_terminals = true,
 })
+
+--require("obsidian").setup({
+--  picker = {
+--    name = "telescope.nvim",
+-- , }
+--})

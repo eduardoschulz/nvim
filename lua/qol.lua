@@ -30,6 +30,8 @@ require("noice").setup({
   },
 })
 
+
+
 vim.lsp.handlers['window/showMessage'] = function() end
 require("auto-session").setup()
 require("lualine").setup()
